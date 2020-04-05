@@ -11,24 +11,27 @@ MainWindow::MainWindow(QWidget *parent)
 	mainLayout->setVerticalSpacing(0);
 	
 	QPixmap bkgnd("Images/Background1.jpg");
-	bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
 	QPalette palette;
 	palette.setBrush(QPalette::Background, bkgnd);
 	this->setPalette(palette);
 
 	/*Initialize buttons ---------------------------------------------------*/
 	Continue = new QPushButton("Continue");
-	Continue->setFixedSize(75,30);
+	Continue->setFixedSize(200,40);
 	Play = new QPushButton("Play");
-	Play->setFixedSize(75, 30);
+	Play->setFixedSize(200, 40);
 	Option = new QPushButton("Options");
-	Option->setFixedSize(75, 30);
+	Option->setFixedSize(200, 40);
 	QObject::connect(Option, SIGNAL(clicked()), this, SLOT(showOptionsPage()));
 	Help = new QPushButton("Help");
-	Help->setFixedSize(75, 30);
+	Help->setFixedSize(200, 40);
 	QObject::connect(Help, SIGNAL(clicked()), this, SLOT(showHelpPage()));
+	Save = new QPushButton("Save");
+	Save->setFixedSize(200, 40);
+	QObject::connect(Save, SIGNAL(clicked()), this, SLOT(saveGame()));
 	Exit = new QPushButton("Exit");
-	Exit->setFixedSize(75, 30);
+	Exit->setFixedSize(200, 40);
+	QObject::connect(Exit, SIGNAL(clicked()), this, SLOT(exitGame()));
 
 	mainLayout->addWidget(Continue,1,3,1,1);
 	mainLayout->addWidget(Play,2,3,1,1);
@@ -50,13 +53,13 @@ MainWindow::~MainWindow()
 	delete Exit;
 	delete mainLayout;
 	delete centralWidget;
+	
 }
 
 void MainWindow::showHelpPage()
 {
 	helpPage = new HelpPage(this);
 	helpPage->show();
-	
 }
 
 void MainWindow::showOptionsPage()
@@ -64,4 +67,10 @@ void MainWindow::showOptionsPage()
 	optionsPage = new OptionsPage();
 	optionsPage->show();
 }
+
+void MainWindow::exitGame()
+{
+	this->close();
+}
+
 

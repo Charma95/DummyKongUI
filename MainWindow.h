@@ -11,6 +11,7 @@
 #include <qpushbutton.h>
 #include "Help.h"
 #include <Options.h>
+#include <qmenu.h>
 
 class MainWindow : public QMainWindow
 {
@@ -27,6 +28,7 @@ private:
 	QPushButton *Play;
 	QPushButton *Option;
 	QPushButton *Help;
+	QPushButton *Save;
 	QPushButton *Exit;
     HelpPage *helpPage;   /* We shall convert it to smart pointer (shared pointer)*/
 	OptionsPage *optionsPage;
@@ -34,5 +36,7 @@ private:
 private slots:
 	void showHelpPage();
 	void showOptionsPage();
+	void exitGame();
+	
 };
 #endif // MAINWINDOW_H
