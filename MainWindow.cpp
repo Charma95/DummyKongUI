@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 	mainLayout->setHorizontalSpacing(0);
 	mainLayout->setVerticalSpacing(0);
 	
-	QPixmap bkgnd("C:/Travail/UdeS_2020/APP7/UI_projet/DummyKongUI/Images/Background1.jpg");
+	QPixmap bkgnd("Images/Background1.jpg");
 	bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
 	QPalette palette;
 	palette.setBrush(QPalette::Background, bkgnd);
@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 	Play->setFixedSize(75, 30);
 	Option = new QPushButton("Options");
 	Option->setFixedSize(75, 30);
+	QObject::connect(Option, SIGNAL(clicked()), this, SLOT(showOptionsPage()));
 	Help = new QPushButton("Help");
 	Help->setFixedSize(75, 30);
 	QObject::connect(Help, SIGNAL(clicked()), this, SLOT(showHelpPage()));
@@ -55,6 +56,12 @@ void MainWindow::showHelpPage()
 {
 	helpPage = new HelpPage(this);
 	helpPage->show();
+	
+}
 
+void MainWindow::showOptionsPage()
+{
+	optionsPage = new OptionsPage();
+	optionsPage->show();
 }
 

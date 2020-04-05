@@ -10,6 +10,7 @@
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include "Help.h"
+#include <Options.h>
 
 class MainWindow : public QMainWindow
 {
@@ -28,7 +29,10 @@ private:
 	QPushButton *Help;
 	QPushButton *Exit;
     HelpPage *helpPage;   /* We shall convert it to smart pointer (shared pointer)*/
+	OptionsPage *optionsPage;
+
 private slots:
 	void showHelpPage();
+	void showOptionsPage();
 };
 #endif // MAINWINDOW_H
