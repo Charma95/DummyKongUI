@@ -1,14 +1,14 @@
 ipch/
 *.ipch
 
-DummyKongUI/.vs/DummyKongUI/v15/
+DummyKong/.vs/DummyKong/v15/
 
-DummyKongUI/DummyKongUI/x64/Debug/
+DummyKong/DummyKong/x64/Debug/
 
-DummyKongUI/x64/Debug/
+DummyKong/x64/Debug/
 
 .vs/
 x64/
 *.log
 
-DummyKongUI/DummyKongUI/Debug/
+DummyKong/DummyKong/Debug/
