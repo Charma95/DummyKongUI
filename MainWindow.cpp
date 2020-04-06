@@ -1,7 +1,10 @@
 #include "MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+	: QMainWindow(parent),
+	helpPage(nullptr),
+	optionsPage(nullptr),
+	gamePage(nullptr)
 {
 	centralWidget = new QWidget(this);
 
@@ -76,13 +79,24 @@ MainWindow::MainWindow(QWidget *parent)
 	mainLayout->addWidget(Help,4,3,1,1);
 	mainLayout->addWidget(Exit,5,3,1,1);
 
-
 	centralWidget->setLayout(mainLayout);
 	setCentralWidget(centralWidget);
 }
 
 MainWindow::~MainWindow()
 {
+	delete Continue;
+	delete Play;
+	delete Option;
+	delete Help;
+	delete Exit;
+	delete mainLayout;
+	delete centralWidget;
+
+	//delete helpPage;
+	if (optionsPage != nullptr) delete optionsPage;
+	if (gamePage != nullptr) delete gamePage;
+
 	delete optionsAction;
 	delete saveAction;
 	delete homeAction;
@@ -96,15 +110,6 @@ MainWindow::~MainWindow()
 	delete levelsMenu;
 	delete viewMenu;
 	delete menuBar;
-
-	delete Continue;
-	delete Play;
-	delete Option;
-	delete Help;
-	delete Exit;
-	delete mainLayout;
-	delete centralWidget;
-	
 }
 
 void MainWindow::showHelpPage()
@@ -123,17 +128,18 @@ void MainWindow::showLevelsPage()
 {
 	levelsPage = new LevelsPage();
 	setCentralWidget(levelsPage);
+	QObject::connect(levelsPage, SIGNAL(levelSelected()), this, SLOT(showGamePage()));
 }
 
 void MainWindow::showHomePage()
 {
-	/* The home page should be a class????*/
+
 }
 
 void MainWindow::showGamePage()
 {
-	//gamePage = new GamePage();
-	//setCentralWidget(gamePage);
+	gamePage = new GamePage();
+	setCentralWidget(gamePage);
 }
 
 void MainWindow::saveLevel()

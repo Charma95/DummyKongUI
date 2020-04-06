@@ -16,4 +16,10 @@ private:
 	QPushButton *level1;
 	QPushButton *level2;
 	QPushButton *level3;
+
+public slots:
+	void showGameWindow();
+
+signals:
+	void levelSelected();
 };

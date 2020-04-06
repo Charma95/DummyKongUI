@@ -6,6 +6,9 @@
 #include <qslider.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
+#include <qradiobutton.h>
+#include <qbuttongroup.h>
+#include <qlabel.h>
 
 class OptionsPage : public QMainWindow
 {
@@ -16,8 +19,14 @@ public:
 private:
 	QWidget *centralWidget;
 	QVBoxLayout *mainLayout;
+	QLabel *optionsLabel;
+	QLabel *volumeLabel;
 	QSlider *volumeSlider;
-	QSlider *sensisivitySlider;
+	QLabel *sensitivityLabel;
+	QSlider *sensitivitySlider;
 	QPushButton *recordButton;
-	QCheckBox *FPS;
+	QRadioButton *FPS30;
+	QRadioButton *FPS60;
+	QPushButton *okButton;
+
 };
