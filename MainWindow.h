@@ -33,7 +33,10 @@ private:
 	QPushButton *Help;
 	QPushButton *Save;
 	QPushButton *Exit;
-    HelpPage *helpPage;   /* We shall convert it to smart pointer (shared pointer)*/
+	/* Salut Oli mon autisme a triggered on fais-tu du code type safe since on est trop fort?*/
+	/*-------------------------------------------------------------------------------------*/
+    std::shared_ptr<HelpPage> helpPage;  
+	/*-------------------------------------------------------------------------------------*/
 	OptionsPage *optionsPage;
 	LevelsPage *levelsPage;
 	GamePage *gamePage;
@@ -57,5 +60,8 @@ private slots:
 	void showLevelsPage();
 	void showHomePage();
 	void showGamePage();
+	void exitGame();
+	void saveLevel();
+
 };
 #endif // MAINWINDOW_H

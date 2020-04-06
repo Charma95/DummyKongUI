@@ -1,15 +1,22 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (debug\) contient des fichiers partagés provenant d'un autre projet (DummyKongUI.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
-<<<<<<< HEAD
-  Help.cpp
-  DummyKong.vcxproj -> C:\Travail\UdeS_2020\APP7\UI_projet\DummyKongUI\debug\DummyKong.exe
-=======
+  Generate moc_predefs.h
+  MOC GameWindow.h
+  Le chemin d'accès spécifié est introuvable.
+  MOC Help.h
   MOC Levels.h
+  Le chemin d'accès spécifié est introuvable.
   MOC MainWindow.h
+  MOC Options.h
+  GameWindow.cpp
+  Help.cpp
   Levels.cpp
   MainWindow.cpp
+  Options.cpp
   main.cpp
+  moc_GameWindow.cpp
+  moc_Help.cpp
   moc_Levels.cpp
   moc_MainWindow.cpp
+  moc_Options.cpp
   Génération de code en cours...
-  DummyKong.vcxproj -> C:\Users\Olivier Lortie\Documents\UdeS-H20\APP7\DummyKongUI\debug\DummyKong.exe
->>>>>>> master
+  DummyKong.vcxproj -> C:\Travail\UdeS_2020\APP7\UI_projet\DummyKongUI\debug\DummyKong.exe

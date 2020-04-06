@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 	optionsAction = new QAction("Options");
 	saveAction = new QAction("Save");
+	QObject::connect(saveAction, SIGNAL(triggered()), this, SLOT(saveLevel()));
 	homeAction = new QAction("Home");
 	QObject::connect(homeAction, SIGNAL(triggered()), this, SLOT(showHomePage()));
 	quitAction = new QAction("Quit");
@@ -54,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent)
 	Continue = new QPushButton("Continue");
 	Continue->setFixedSize(200,40);
 	Play = new QPushButton("Play");
-	Play->setFixedSize(75, 30);
+	Play->setFixedSize(200, 40);
 	QObject::connect(Play, SIGNAL(clicked()), this, SLOT(showLevelsPage()));
 	Option = new QPushButton("Options");
 	Option->setFixedSize(200, 40);
@@ -108,7 +109,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::showHelpPage()
 {
-	helpPage = new HelpPage(this);
+	helpPage = std::make_shared<HelpPage>(this);
 	helpPage->show();
 }
 
@@ -126,12 +127,22 @@ void MainWindow::showLevelsPage()
 
 void MainWindow::showHomePage()
 {
-	//setCentralWidget(centralWidget);
+	/* The home page should be a class????*/
 }
 
 void MainWindow::showGamePage()
 {
 	//gamePage = new GamePage();
 	//setCentralWidget(gamePage);
+}
+
+void MainWindow::saveLevel()
+{
+	/* save level and floor in a .log file stored in the project*/
+}
+
+void MainWindow::exitGame()
+{
+	this->close();
 }
 

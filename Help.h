@@ -18,9 +18,20 @@ public:
 private slots:
 	void closeHelpPage();
 private:
+	/*Variables ----------------------------------------------------------*/
+#pragma region variables
 	QLabel *Message;
 	QWidget *helpWidget;
 	QGridLayout *helpLayout;
 	QColor *color;
 	QPushButton *Ok;
+#pragma endregion variables
+	/*Methods ------------------------------------------------------------*/
+#pragma region methods
+	void setupUI();
+	void createWidget();
+	void initializeWidget();
+
+#pragma endregion methods
+
 };
