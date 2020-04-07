@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent)
 	QObject::connect(Help, SIGNAL(clicked()), this, SLOT(showHelpPage()));
 	Save = new QPushButton("Save");
 	Save->setFixedSize(200, 40);
-	QObject::connect(Save, SIGNAL(clicked()), this, SLOT(saveGame()));
+	QObject::connect(Save, SIGNAL(clicked()), this, SLOT(saveLevel()));
 	Exit = new QPushButton("Exit");
 	Exit->setFixedSize(200, 40);
 	QObject::connect(Exit, SIGNAL(clicked()), this, SLOT(exitGame()));
@@ -85,18 +85,14 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-	delete Continue;
-	delete Play;
-	delete Option;
-	delete Help;
-	delete Exit;
-	delete mainLayout;
-	delete centralWidget;
-
-	//delete helpPage;
+	//qDebug() << "Destructor de ton anus" << endl;
+	if(Continue != nullptr) delete Continue;
+	if(Play != nullptr)delete Play;
+	if (Option != nullptr)delete Option;
+	if (Help != nullptr)delete Help;
+	if (Exit != nullptr)delete Exit;
 	if (optionsPage != nullptr) delete optionsPage;
 	if (gamePage != nullptr) delete gamePage;
-
 	delete optionsAction;
 	delete saveAction;
 	delete homeAction;
@@ -110,11 +106,13 @@ MainWindow::~MainWindow()
 	delete levelsMenu;
 	delete viewMenu;
 	delete menuBar;
+	if (mainLayout != nullptr)delete mainLayout;
+	if (centralWidget != nullptr)delete centralWidget;
 }
 
 void MainWindow::showHelpPage()
 {
-	helpPage = std::make_shared<HelpPage>(this);
+	helpPage = std::make_unique<HelpPage>(this);
 	helpPage->show();
 }
 
@@ -129,6 +127,13 @@ void MainWindow::showLevelsPage()
 	levelsPage = new LevelsPage();
 	setCentralWidget(levelsPage);
 	QObject::connect(levelsPage, SIGNAL(levelSelected()), this, SLOT(showGamePage()));
+	Continue = nullptr;
+	Play = nullptr;
+	Option = nullptr;
+	Help = nullptr;
+	Exit = nullptr;
+	mainLayout = nullptr;
+	centralWidget = nullptr;
 }
 
 void MainWindow::showHomePage()
@@ -144,6 +149,19 @@ void MainWindow::showGamePage()
 
 void MainWindow::saveLevel()
 {
+	/* Pour fin de tests seulement */
+	level = "7";
+	/*-----------------------------*/
+	QString fName = "logs/DunkeyKong_Sauvegarde.log";
+	QFile file(fName);
+
+	if (file.open(QIODevice::ReadWrite | QIODevice::Text))
+	{
+		QTextStream stream(&file);
+		stream << level
+			<< endl;
+	}
+	file.close();
 	/* save level and floor in a .log file stored in the project*/
 }
 
