@@ -23,6 +23,7 @@ LevelsPage::LevelsPage(QWidget *parent) : QWidget(parent)
 	mainLayout->addWidget(level2);
 	mainLayout->addWidget(level3);
 
+
 	setLayout(mainLayout);
 }
 
