@@ -71,6 +71,7 @@ private slots:
 	void showGamePage();
 	void exitGame();
 	void saveLevel();
+	void continueLastGame();
 
 };
 #endif // MAINWINDOW_H

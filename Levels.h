@@ -16,6 +16,7 @@ private:
 	QPushButton *level1;
 	QPushButton *level2;
 	QPushButton *level3;
+	QPushButton *level4;
 
 public slots:
 	void showGameWindow();
