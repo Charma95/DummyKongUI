@@ -1,11 +1,3 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (debug\) contient des fichiers partagés provenant d'un autre projet (DummyKongUI.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
-<<<<<<< HEAD
-  GameWindow.cpp
-c:\users\olivier lortie\documents\udes-h20\app7\dummykongui\gamewindow.cpp(5): warning C4189: 'label' : variable locale initialisée mais non référencée
-  DummyKong.vcxproj -> C:\Users\Olivier Lortie\Documents\UdeS-H20\APP7\DummyKongUI\debug\DummyKong.exe
-=======
   Levels.cpp
-  MainWindow.cpp
-  Génération de code en cours...
   DummyKong.vcxproj -> C:\Travail\UdeS_2020\APP7\UI_projet\DummyKongUI\debug\DummyKong.exe
->>>>>>> master
