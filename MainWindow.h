@@ -27,6 +27,7 @@ public:
 private:
 	QWidget *centralWidget;
 	QGridLayout *mainLayout;
+	QLabel *logo;
 	QPushButton *Continue;
 	QPushButton *Play;
 	QPushButton *Option;

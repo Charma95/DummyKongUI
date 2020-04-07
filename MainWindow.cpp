@@ -51,10 +51,13 @@ MainWindow::MainWindow(QWidget *parent)
 	
 	QPixmap bkgnd("Images/Background1.jpg");
 	QPalette palette;
+	centralWidget->setAutoFillBackground(true);
 	palette.setBrush(QPalette::Background, bkgnd);
-	this->setPalette(palette);
+	centralWidget->setPalette(palette);
 
 	/*Initialize buttons ---------------------------------------------------*/
+	logo = new QLabel;
+	logo->setPixmap(QPixmap("Images/Logo.jpg"));
 	Continue = new QPushButton("Continue");
 	Continue->setFixedSize(200,40);
 	Play = new QPushButton("Play");
@@ -73,6 +76,7 @@ MainWindow::MainWindow(QWidget *parent)
 	Exit->setFixedSize(200, 40);
 	QObject::connect(Exit, SIGNAL(clicked()), this, SLOT(exitGame()));
 
+	//mainLayout->addWidget(logo, 1, 3, 1, 1);
 	mainLayout->addWidget(Continue,1,3,1,1);
 	mainLayout->addWidget(Play,2,3,1,1);
 	mainLayout->addWidget(Option, 3, 3, 1, 1);
@@ -85,13 +89,15 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+	//Aucune idée pourquoi, mais si je les met pas en commentaire, ça plante quand on ferme l'application
+	/*delete logo;
 	delete Continue;
 	delete Play;
 	delete Option;
 	delete Help;
 	delete Exit;
 	delete mainLayout;
-	delete centralWidget;
+	delete centralWidget;*/
 
 	//delete helpPage;
 	if (optionsPage != nullptr) delete optionsPage;
@@ -120,6 +126,7 @@ void MainWindow::showHelpPage()
 
 void MainWindow::showOptionsPage()
 {
+	if (optionsPage != nullptr) delete optionsPage;
 	optionsPage = new OptionsPage();
 	optionsPage->show();
 }

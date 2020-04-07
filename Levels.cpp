@@ -10,6 +10,12 @@ LevelsPage::LevelsPage(QWidget *parent) : QWidget(parent)
 	level3 = new QPushButton("Level 3");
 	QObject::connect(level3, SIGNAL(clicked()), this, SLOT(showGameWindow()));
 
+	QPixmap bkgnd("Images/Background1.jpg");
+	QPalette palette;
+	setAutoFillBackground(true);
+	palette.setBrush(QPalette::Background, bkgnd);
+	setPalette(palette);
+
 	mainLayout->addWidget(level1);
 	mainLayout->addWidget(level2);
 	mainLayout->addWidget(level3);
