@@ -11,10 +11,20 @@
 #include <qpushbutton.h>
 #include <qmenu.h>
 #include <qmenubar.h>
+#include <qfile.h>
+#include <qstring.h>
+#include <qtextstream.h>
+#include <qdatetime.h>
+/*For debugging even if we dont have to bcuz we too goooood*/
+#include <qdebug.h>
+#include <ostream>
+#include <iostream>
+
 #include "Help.h"
 #include "Levels.h"
 #include <Options.h>
 #include "GameWindow.h"
+
 
 class MainWindow : public QMainWindow
 {
@@ -34,10 +44,7 @@ private:
 	QPushButton *Help;
 	QPushButton *Save;
 	QPushButton *Exit;
-	/* Salut Oli mon autisme a triggered on fais-tu du code type safe since on est trop fort?*/
-	/*-------------------------------------------------------------------------------------*/
-    std::shared_ptr<HelpPage> helpPage;  
-	/*-------------------------------------------------------------------------------------*/
+    std::unique_ptr<HelpPage> helpPage;  
 	OptionsPage *optionsPage;
 	LevelsPage *levelsPage;
 	GamePage *gamePage;
@@ -54,6 +61,7 @@ private:
 	QAction *level3Action;
 	QAction *fullScreenAction;
 	QAction *normalScreenAction;
+	QString level;
 
 private slots:
 	void showHelpPage();
