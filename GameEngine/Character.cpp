@@ -128,6 +128,12 @@ int Character::getJumpingState()
 	return jumpingState;
 }
 
+void Character::setJumpingState(int jmp)
+{
+	jumpingState = jmp;
+}
+
+
 void Character::takeDamage(int dmg)
 {
 	lifePoints -= dmg;

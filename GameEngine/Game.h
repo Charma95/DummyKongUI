@@ -28,4 +28,5 @@ public:
 	Character getMario();
 	Character getDummyKong();
 	void showLevel();
+	Level getLevel();
 };

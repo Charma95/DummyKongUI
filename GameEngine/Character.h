@@ -49,6 +49,7 @@ public:
 	bool isFalling();
 	bool isJumping();
 	int getJumpingState();
+	void setJumpingState(int jmp);
 
 	void takeDamage(int dmg);
 	void gainLifePoints(int lifePts);

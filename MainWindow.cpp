@@ -175,3 +175,9 @@ void MainWindow::exitGame()
 	this->close();
 }
 
+void MainWindow::continueLastGame()
+{
+
+}
+
+

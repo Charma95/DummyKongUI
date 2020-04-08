@@ -12,8 +12,8 @@ Description : Déclaration de la classe Level
 
 using namespace std;
 
-#define MAX_WIDTH 30
-#define MAX_HEIGHT 30
+#define MAX_WIDTH 38
+#define MAX_HEIGHT 22
 #define AIR 0
 #define MAP 1
 #define ECHELLE 2

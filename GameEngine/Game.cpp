@@ -120,11 +120,11 @@ bool Game::refresh()
 		}
 		if (MOVE_LEFT == -1)
 		{
-			if (level.getMap(mario.getPosition().y, mario.getPosition().x - 1) != MAP) mario.backward();
+			if (mario.getPosition().x > 0) mario.backward();
 		}
 		if (MOVE_RIGHT == 1)
 		{
-			if (level.getMap(mario.getPosition().y, mario.getPosition().x + 1) != MAP) mario.forward();
+			if (mario.getPosition().x < MAX_WIDTH-1) mario.forward();
 		}
 		if (MOVE_UP == 1)
 		{
@@ -140,7 +140,11 @@ bool Game::refresh()
 		{
 			if (mario.getJumpingState() == 0 && level.getMap(mario.getPosition().y + 1, mario.getPosition().x) == MAP) mario.jump();
 		}
-		if (mario.getJumpingState() != 0) mario.jump();
+		if (level.getMap(mario.getPosition().y - 1, mario.getPosition().x) != AIR)
+		{
+			mario.setJumpingState(0);
+		}
+		else if (mario.getJumpingState() != 0) mario.jump();
 		
 		if (level.checkAroundPlayer(mario.getPosition().x, mario.getPosition().y, PEACH)) level.completeLevel();
 
@@ -213,4 +217,9 @@ void Game::showLevel()
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	cout << "Life Points : " << mario.getLifePoints() << endl;
 	cout << "Life count : " << mario.getLifeCount() << endl;
+}
+
+Level Game::getLevel()
+{
+	return level;
 }
