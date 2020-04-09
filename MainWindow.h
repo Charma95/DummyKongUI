@@ -15,8 +15,6 @@
 #include <qstring.h>
 #include <qtextstream.h>
 #include <qdatetime.h>
-#include <qmessagebox.h>
-/*For debugging even if we dont have to bcuz we too goooood*/
 #include <qdebug.h>
 #include <ostream>
 #include <iostream>
@@ -25,6 +23,8 @@
 #include "GameEngine/Game.h"
 #include <Options.h>
 #include "GameWindow.h"
+#include <QKeyEvent>
+
 
 
 class MainWindow : public QMainWindow
@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-	
+	//void keyPressEvent(QKeyEvent *event);
 
 private:
 	QWidget *centralWidget;

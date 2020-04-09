@@ -13,7 +13,5 @@ int main(int argc, char *argv[])
 	w.setWindowIcon(QIcon("Images/Icon.png"));
 	w.showMaximized();
 
-
-
     return a.exec();
 }

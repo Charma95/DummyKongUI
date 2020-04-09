@@ -35,9 +35,9 @@ Level::Level(int level)
 		}
 
 		//échelle
-		for (int i = MAX_HEIGHT - 1; i >= MAX_HEIGHT - 4; i--)
+		for (int i = MAX_HEIGHT - 2; i >= MAX_HEIGHT - 4; i--)
 		{
-			map[i][MAX_WIDTH - 4] = ECHELLE;
+			map[i][MAX_WIDTH - 4] = LADDER;
 		}
 		break;
 	case 2:
@@ -51,7 +51,8 @@ Level::Level(int level)
 
 Level::~Level()
 {
-	//if (hammer != nullptr) delete hammer;
+	cout << "destructeur de Level\n";
+	//delete hammer;
 }
 
 unsigned char Level::getDifficulty()
@@ -88,7 +89,7 @@ void Level::update()
 			case MAP:
 				cout << "#";
 				break;
-			case ECHELLE:
+			case LADDER:
 				cout << "1";
 				break;
 			default:

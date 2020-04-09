@@ -13,8 +13,8 @@ Description : D�claration de la classe Game
 class Game
 {
 private:
-	Level level;
-	Character mario;
+	Level *level;
+	Character *mario;
 	Character dummyKong;
 	bool isPaused;
 	XController player;
@@ -25,8 +25,8 @@ public:
 	bool start();
 	bool refresh();
 	bool pause();
-	Character getMario();
+	Character* getMario();
 	Character getDummyKong();
 	void showLevel();
-	Level getLevel();
+	Level* getLevel();
 };

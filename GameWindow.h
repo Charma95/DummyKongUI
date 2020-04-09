@@ -4,16 +4,25 @@
 #include <qlayout.h>
 #include <qlabel.h>
 #include "GameEngine/Game.h"
+#include "GameEngine/timer.h"
+#include <QGraphicsScene>
+#include <qgraphicsview.h>
+#include <QGraphicsPixmapItem>
 
-class GamePage : public QWidget
+#include "GameEngine/Character.h"
+
+class GamePage : public QGraphicsView
 {
 	Q_OBJECT
 public:
 	GamePage(QWidget *parent = nullptr);
 	~GamePage();
 	void drawMap();
-private:
-	QGridLayout *gameLayout;
-	Game mainGame;
+	void refresh();
+	void keyPressEvent(QKeyEvent *event);
 
+private:
+	Game mainGame;
+	timer *t1;
+	QGraphicsScene *scene;
 };

@@ -237,6 +237,22 @@ void MainWindow::exitGame()
 	this->close();
 }
 
+/*void MainWindow::keyPressEvent(QKeyEvent *event) {
+	qDebug("allo");
+	// move the player left and right
+	if (event->key() == Qt::Key_A) {
+		qDebug("gauche\n");
+		//if (pos().x() > 0)
+			//setPos(x() - 100, y());
+	}
+	else if (event->key() == Qt::Key_D) {
+		qDebug("Droite\n");
+		//if (pos().x() + 48 < PIX_WIDTH * MAX_WIDTH);
+		//setPos(x() + 100, y());
+	}
+}*/
+
+
 
 
 
