@@ -3,6 +3,7 @@
 #include <qwidget.h>
 #include <qlayout.h>
 #include <qlabel.h>
+#include "GameEngine/Barrel.h"
 
 class GamePage : public QWidget
 {

@@ -4,12 +4,14 @@
 #include <qwidget.h>
 #include <qlayout.h>
 #include <qpushbutton.h>
+#include <qstring.h>
+#include "MainWindow.h"
 
 class LevelsPage : public QWidget
 {
 	Q_OBJECT
 public:
-	LevelsPage(QWidget *parent = nullptr);
+	explicit LevelsPage(QWidget *parent = nullptr);
 	~LevelsPage();
 private:
 	QVBoxLayout *mainLayout;
