@@ -13,14 +13,5 @@ int main(int argc, char *argv[])
 	w.setWindowIcon(QIcon("Images/Icon.png"));
 	w.showMaximized();
 
-	/*Game mainGame;
-
-	timer t1([&]() {
-
-		mainGame.refresh();
-	}, 100);
-	
-	t1.start();*/
-
     return a.exec();
 }

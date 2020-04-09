@@ -10,12 +10,16 @@ Description : D�claration de la classe Character
 #include "Level.h"
 #include "timer.h"
 #include "Hammer.h"
+#include <QGraphicsPixmapItem>
+#include <QKeyEvent>
 
 #define G 3
+#define PIX_WIDTH 50
+#define PIX_HEIGHT 50
 
 using namespace std;
 
-class Character
+class Character : public QGraphicsPixmapItem
 {
 private:
 	int lifePoints;
@@ -28,7 +32,8 @@ private:
 	Hammer *hammer;
 
 public:
-	Character(int positionX = 1, int positionY = MAX_HEIGHT - 2);
+	Character(int positionX = 1, int positionY = MAX_HEIGHT - 2, QPixmap pixmap = QPixmap(""));
+	Character(const Character &character2);
 	virtual ~Character();
 	int getLifePoints();
 	void setLifePoints(int newLifePoints);
