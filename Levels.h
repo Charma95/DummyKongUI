@@ -5,7 +5,7 @@
 #include <qlayout.h>
 #include <qpushbutton.h>
 #include <qstring.h>
-#include "MainWindow.h"
+
 
 class LevelsPage : public QWidget
 {

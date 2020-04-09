@@ -20,7 +20,6 @@
 #include <qdebug.h>
 #include <ostream>
 #include <iostream>
-
 #include "Help.h"
 #include "Levels.h"
 #include "GameEngine/Game.h"
@@ -35,7 +34,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+	
 
 private:
 	QWidget *centralWidget;

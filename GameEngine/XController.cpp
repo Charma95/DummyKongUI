@@ -42,6 +42,7 @@ void XController::updateController()
 {
 	readController();
 	system("cls");
+	isUpdated = true;
 	std::cout << player << std::endl;
 }
 

@@ -47,6 +47,7 @@ public:
 	void rJoyStick();
 	void lJoyStick();
 	XINPUT_STATE GetState();
+	bool isUpdated;
 };
 std::ostream& operator<<(std::ostream &os, const struct Controller& player);
 

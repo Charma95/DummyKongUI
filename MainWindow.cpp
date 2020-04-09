@@ -51,6 +51,7 @@ void MainWindow::showOptionsPage()
 
 void MainWindow::showLevelsPage()
 {
+//	LevelsPage *levelsPage;
 	levelsPage = new LevelsPage(this);
 	setCentralWidget(levelsPage);
 	QObject::connect(levelsPage, SIGNAL(levelSelected()), this, SLOT(showGamePage()));
@@ -236,9 +237,6 @@ void MainWindow::exitGame()
 	this->close();
 }
 
-void MainWindow::continueLastGame()
-{
 
-}
 
 
