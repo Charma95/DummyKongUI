@@ -1,4 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: Le répertoire intermédiaire (debug\) contient des fichiers partagés provenant d'un autre projet (DummyKongUI.vcxproj). Cela peut entraîner un comportement de nettoyage et de régénération incorrect.
+<<<<<<< HEAD
   MOC MainWindow.h
   Levels.cpp
 c:\travail\udes_2020\app7\ui_projet\dummykongui\mainwindow.h(48): error C2143: erreur de syntaxe : absence de ';' avant '*'
@@ -12,3 +13,7 @@ c:\travail\udes_2020\app7\ui_projet\dummykongui\mainwindow.h(48): error C4430: s
 c:\travail\udes_2020\app7\ui_projet\dummykongui\mainwindow.h(48): error C2238: jetons inattendus avant ';'
   moc_MainWindow.cpp
   Génération de code en cours...
+=======
+  Level.cpp
+  DummyKong.vcxproj -> C:\Users\Olivier Lortie\Documents\UdeS-H20\APP7\DummyKongUI\debug\DummyKong.exe
+>>>>>>> master

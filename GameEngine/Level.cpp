@@ -16,20 +16,29 @@ Level::Level(int level)
 	switch (index)
 	{
 	case 1:
+		//fond de la map
 		for (int i = 0; i < MAX_HEIGHT; i++)
 		{
 			for (int j = 0; j < MAX_WIDTH; j++)
 			{
-				if (i == MAX_HEIGHT - 10) map[i][j] = MAP;
-				if (i == 0 || i == MAX_HEIGHT - 1 || j == 0 || j == MAX_WIDTH - 1) map[i][j] = MAP;
+				map[i][j] = AIR;
 			}
 		}
-		for (int k = MAX_HEIGHT - 2; k >= MAX_HEIGHT - 10; k--)
+
+		//planchers
+		for (int i = 0; i < MAX_WIDTH; i++)
 		{
-			map[k][MAX_WIDTH - 10] = ECHELLE;
+			map[MAX_HEIGHT - 1][i] = MAP;
+			map[MAX_HEIGHT - 4][i] = MAP;
+			map[MAX_HEIGHT - 8][i] = MAP;
+			map[MAX_HEIGHT - 12][i] = MAP;
 		}
-		map[hammer->getPosition().y][hammer->getPosition().x] = HAMMER;
-		map[MAX_HEIGHT - 11][1] = PEACH;
+
+		//échelle
+		for (int i = MAX_HEIGHT - 1; i >= MAX_HEIGHT - 4; i--)
+		{
+			map[i][MAX_WIDTH - 4] = ECHELLE;
+		}
 		break;
 	case 2:
 		break;
@@ -42,7 +51,7 @@ Level::Level(int level)
 
 Level::~Level()
 {
-	delete hammer;
+	//if (hammer != nullptr) delete hammer;
 }
 
 unsigned char Level::getDifficulty()

@@ -23,6 +23,7 @@
 
 #include "Help.h"
 #include "Levels.h"
+#include "GameEngine/Game.h"
 #include <Options.h>
 #include "GameWindow.h"
 

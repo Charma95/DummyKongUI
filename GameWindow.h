@@ -3,7 +3,7 @@
 #include <qwidget.h>
 #include <qlayout.h>
 #include <qlabel.h>
-#include "GameEngine/Barrel.h"
+#include "GameEngine/Game.h"
 
 class GamePage : public QWidget
 {
@@ -11,6 +11,9 @@ class GamePage : public QWidget
 public:
 	GamePage(QWidget *parent = nullptr);
 	~GamePage();
+	void drawMap();
 private:
 	QGridLayout *gameLayout;
+	Game mainGame;
+
 };
