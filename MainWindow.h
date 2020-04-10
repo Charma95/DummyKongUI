@@ -23,6 +23,7 @@
 #include "GameEngine/Game.h"
 #include <Options.h>
 #include "GameWindow.h"
+#include "qmessagebox.h"
 #include <QKeyEvent>
 
 

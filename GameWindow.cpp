@@ -67,15 +67,12 @@ void GamePage::refresh()
 }
 
 void GamePage::keyPressEvent(QKeyEvent *event) {
-	qDebug("allo");
 	// move the player left and right
 	if (event->key() == Qt::Key_A) {
-		qDebug("gauche\n");
 		if (mainGame.getMario()->pos().x() > 0)
 			mainGame.getMario()->setPos(mainGame.getMario()->x() - 10, mainGame.getMario()->y());
 	}
 	else if (event->key() == Qt::Key_D) {
-		qDebug("Droite\n");
 		if (mainGame.getMario()->pos().x() + 48 < PIX_WIDTH * MAX_WIDTH);
 		mainGame.getMario()->setPos(mainGame.getMario()->x() + 10, mainGame.getMario()->y());
 	}
