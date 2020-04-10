@@ -1,8 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define MAX_HEIGHT 15
-#define MAX_WIDTH 15
+//#define MAX_HEIGHT 15
+//#define MAX_WIDTH 15
 
 #include <QMainWindow>
 #include <qlayout.h>
@@ -18,7 +18,6 @@
 #include <qdebug.h>
 #include <ostream>
 #include <iostream>
-
 #include "Help.h"
 #include "Levels.h"
 #include "GameEngine/Game.h"
@@ -40,16 +39,15 @@ public:
 private:
 	QWidget *centralWidget;
 	QGridLayout *mainLayout;
-	QLabel *logo;
 	QPushButton *Continue;
 	QPushButton *Play;
 	QPushButton *Option;
 	QPushButton *Help;
 	QPushButton *Save;
 	QPushButton *Exit;
+	LevelsPage *levelsPage;
     std::unique_ptr<HelpPage> helpPage;  
 	OptionsPage *optionsPage;
-	LevelsPage *levelsPage;
 	GamePage *gamePage;
 	QMenuBar *menuBar;
 	QMenu *fileMenu;
@@ -64,7 +62,15 @@ private:
 	QAction *level3Action;
 	QAction *fullScreenAction;
 	QAction *normalScreenAction;
-	QString level;
+	QString m_level;
+
+	/* Private methods */
+	void initWidget();
+	void initButton();
+	void initLayout();
+	void initMenus();
+	void initUI();
+	void setupUI();
 
 private slots:
 	void showHelpPage();

@@ -6,85 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
 	optionsPage(nullptr),
 	gamePage(nullptr)
 {
-	centralWidget = new QWidget(this);
-
-	mainLayout = new QGridLayout();
-
-	/*Initializing menu---------------------------------------*/
-	menuBar = new QMenuBar();
-	fileMenu = new QMenu("File");
-	levelsMenu = new QMenu("Levels");
-	viewMenu = new QMenu("View");
-
-	optionsAction = new QAction("Options");
-	saveAction = new QAction("Save");
-	QObject::connect(saveAction, SIGNAL(triggered()), this, SLOT(saveLevel()));
-	homeAction = new QAction("Home");
-	QObject::connect(homeAction, SIGNAL(triggered()), this, SLOT(showHomePage()));
-	quitAction = new QAction("Quit");
-	level1Action = new QAction("Level 1");
-	level2Action = new QAction("Level 2");
-	level3Action = new QAction("Level 3");
-	fullScreenAction = new QAction("Full screen");
-	normalScreenAction = new QAction("Regular screen");
-
-	fileMenu->addAction(optionsAction);
-	fileMenu->addAction(saveAction);
-	fileMenu->addAction(homeAction);
-	fileMenu->addAction(quitAction);
-
-	levelsMenu->addAction(level1Action);
-	levelsMenu->addAction(level2Action);
-	levelsMenu->addAction(level3Action);
-
-	viewMenu->addAction(fullScreenAction);
-	viewMenu->addAction(normalScreenAction);
-
-	menuBar->addMenu(fileMenu);
-	menuBar->addMenu(levelsMenu);
-	menuBar->addMenu(viewMenu);
-
-	setMenuBar(menuBar);
-
-	mainLayout->setHorizontalSpacing(0);
-	mainLayout->setVerticalSpacing(0);
-	
-	QPixmap bkgnd("Images/Background1.jpg");
-	QPalette palette;
-	centralWidget->setAutoFillBackground(true);
-	palette.setBrush(QPalette::Background, bkgnd);
-	centralWidget->setPalette(palette);
-
-	/*Initialize buttons ---------------------------------------------------*/
-	logo = new QLabel;
-	logo->setPixmap(QPixmap("Images/Logo.jpg"));
-	Continue = new QPushButton("Continue");
-	Continue->setFixedSize(200,40);
-	Play = new QPushButton("Play");
-	Play->setFixedSize(200, 40);
-	QObject::connect(Play, SIGNAL(clicked()), this, SLOT(showLevelsPage()));
-	Option = new QPushButton("Options");
-	Option->setFixedSize(200, 40);
-	QObject::connect(Option, SIGNAL(clicked()), this, SLOT(showOptionsPage()));
-	Help = new QPushButton("Help");
-	Help->setFixedSize(200, 40);
-	QObject::connect(Help, SIGNAL(clicked()), this, SLOT(showHelpPage()));
-	Save = new QPushButton("Save");
-	Save->setFixedSize(200, 40);
-	QObject::connect(Save, SIGNAL(clicked()), this, SLOT(saveLevel()));
-	Exit = new QPushButton("Exit");
-	Exit->setFixedSize(200, 40);
-	QObject::connect(Exit, SIGNAL(clicked()), this, SLOT(exitGame()));
-
-	//mainLayout->addWidget(logo, 1, 3, 1, 1);
-	mainLayout->addWidget(Continue,1,3,1,1);
-	mainLayout->addWidget(Play,2,3,1,1);
-	mainLayout->addWidget(Option, 3, 3, 1, 1);
-	mainLayout->addWidget(Help,4,3,1,1);
-	mainLayout->addWidget(Exit,5,3,1,1);
-
-	centralWidget->setLayout(mainLayout);
-	setCentralWidget(centralWidget);
+	setupUI();
 }
 
 MainWindow::~MainWindow()
@@ -129,7 +51,8 @@ void MainWindow::showOptionsPage()
 
 void MainWindow::showLevelsPage()
 {
-	levelsPage = new LevelsPage();
+//	LevelsPage *levelsPage;
+	levelsPage = new LevelsPage(this);
 	setCentralWidget(levelsPage);
 	QObject::connect(levelsPage, SIGNAL(levelSelected()), this, SLOT(showGamePage()));
 	Continue = nullptr;
@@ -144,6 +67,8 @@ void MainWindow::showLevelsPage()
 void MainWindow::showHomePage()
 {
 
+	gamePage = nullptr;
+	setupUI();
 }
 
 void MainWindow::showGamePage()
@@ -151,11 +76,16 @@ void MainWindow::showGamePage()
 	gamePage = new GamePage();
 	setCentralWidget(gamePage);
 }
-
+/* ***********************************************************
+* save level in a .log file stored in the project
+*
+*
+*
+*************************************************************/
 void MainWindow::saveLevel()
 {
 	/* Pour fin de tests seulement */
-	level = "7";
+	m_level = "42";
 	/*-----------------------------*/
 	QString fName = "logs/DunkeyKong_Sauvegarde.log";
 	QFile file(fName);
@@ -163,21 +93,148 @@ void MainWindow::saveLevel()
 	if (file.open(QIODevice::ReadWrite | QIODevice::Text))
 	{
 		QTextStream stream(&file);
-		stream << level
-			<< endl;
+		stream << m_level << endl;
 	}
 	file.close();
-	/* save level and floor in a .log file stored in the project*/
+	
 }
 
-void MainWindow::exitGame()
+void MainWindow::initWidget()
 {
-	this->close();
+	centralWidget = new QWidget(this);
+	mainLayout = new QGridLayout();
+}
+void MainWindow::initButton()
+{
+	Continue = new QPushButton("Continue");
+	Continue->setFixedSize(200, 40);
+	QObject::connect(Continue, SIGNAL(clicked()), this, SLOT(continueLastGame()));
+	Play = new QPushButton("Play");
+	Play->setFixedSize(200, 40);
+	QObject::connect(Play, SIGNAL(clicked()), this, SLOT(showLevelsPage()));
+	Option = new QPushButton("Options");
+	Option->setFixedSize(200, 40);
+	QObject::connect(Option, SIGNAL(clicked()), this, SLOT(showOptionsPage()));
+	Help = new QPushButton("Help");
+	Help->setFixedSize(200, 40);
+	QObject::connect(Help, SIGNAL(clicked()), this, SLOT(showHelpPage()));
+	Save = new QPushButton("Save");
+	Save->setFixedSize(200, 40);
+	QObject::connect(Save, SIGNAL(clicked()), this, SLOT(saveLevel()));
+	Exit = new QPushButton("Exit");
+	Exit->setFixedSize(200, 40);
+	QObject::connect(Exit, SIGNAL(clicked()), this, SLOT(exitGame()));
+}
+void MainWindow::initLayout()
+{
+	mainLayout->setHorizontalSpacing(0);
+	mainLayout->setVerticalSpacing(0);
+
+	QPixmap bkgnd("Images/Background1.jpg");
+	QPalette palette;
+	centralWidget->setAutoFillBackground(true);
+	palette.setBrush(QPalette::Background, bkgnd);
+	centralWidget->setPalette(palette);
+}
+void MainWindow::initMenus()
+{
+	menuBar = new QMenuBar();
+	fileMenu = new QMenu("File");
+	levelsMenu = new QMenu("Levels");
+	viewMenu = new QMenu("View");
+
+	optionsAction = new QAction("Options");
+	saveAction = new QAction("Save");
+	QObject::connect(saveAction, SIGNAL(triggered()), this, SLOT(saveLevel()));
+	homeAction = new QAction("Home");
+	QObject::connect(homeAction, SIGNAL(triggered()), this, SLOT(showHomePage()));
+	quitAction = new QAction("Quit");
+	level1Action = new QAction("Level 1");
+	level2Action = new QAction("Level 2");
+	level3Action = new QAction("Level 3");
+	fullScreenAction = new QAction("Full screen");
+	normalScreenAction = new QAction("Regular screen");
+
+	fileMenu->addAction(optionsAction);
+	fileMenu->addAction(saveAction);
+	fileMenu->addAction(homeAction);
+	fileMenu->addAction(quitAction);
+
+	levelsMenu->addAction(level1Action);
+	levelsMenu->addAction(level2Action);
+	levelsMenu->addAction(level3Action);
+
+	viewMenu->addAction(fullScreenAction);
+	viewMenu->addAction(normalScreenAction);
+
+	menuBar->addMenu(fileMenu);
+	menuBar->addMenu(levelsMenu);
+	menuBar->addMenu(viewMenu);
+
+	setMenuBar(menuBar);
+}
+void MainWindow::initUI()
+{
+	mainLayout->setAlignment(Qt::AlignCenter);
+	mainLayout->setSpacing(30);
+	mainLayout->addWidget(Continue, 1, 3, 1, 1);
+	mainLayout->addWidget(Play, 2, 3, 1, 1);
+	mainLayout->addWidget(Option, 3, 3, 1, 1);
+	mainLayout->addWidget(Help, 4, 3, 1, 1);
+	mainLayout->addWidget(Exit, 5, 3, 1, 1);
+
+	centralWidget->setLayout(mainLayout);
+	setCentralWidget(centralWidget);
+}
+
+void MainWindow::setupUI()
+{
+	initWidget();
+	initMenus();
+	initLayout();
+	initButton();
+	initUI();
 }
 
 void MainWindow::continueLastGame()
 {
+	QString fName = "logs/DunkeyKong_Sauvegarde.log";
+	QString c_level;
+	QFile file(fName);
+	if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+	{
+		c_level = file.readAll();
+	}
+	file.close();
+	/* Add line to put the player to the right level*/
+	//qDebug() << c_level << endl;
+}
 
+
+
+void MainWindow::exitGame()
+{
+	QMessageBox msgBox;
+	msgBox.setText("Your progression since your last session");
+	msgBox.setInformativeText("Do you want to save your changes?");
+	msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+	msgBox.setDefaultButton(QMessageBox::Save);
+	int ret = msgBox.exec();
+	switch (ret) {
+	case QMessageBox::Save:
+		saveLevel();
+		break;
+	case QMessageBox::Discard:
+		this->close();
+		break;
+	case QMessageBox::Cancel:
+		this->close();
+		break;
+	default:
+		qDebug() << "we are in trouble" << endl;
+		break;
+	}
+	this->close();
 }
 
 /*void MainWindow::keyPressEvent(QKeyEvent *event) {
@@ -194,6 +251,8 @@ void MainWindow::continueLastGame()
 		//setPos(x() + 100, y());
 	}
 }*/
+
+
 
 
 
